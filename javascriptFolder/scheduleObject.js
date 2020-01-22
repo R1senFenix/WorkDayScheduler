@@ -1,12 +1,40 @@
 // unintialaized js object
 var dailyObject = {
-    Hour9th: { hourName: "9 AM", Events: "" },
-    Hour10th: { hourName: "10 AM", Events: "" },
-    Hour11th: { hourName: "11 AM", Events: "" },
-    Hour12th: { hourName: "12 AM", Events: "" },
-    Hour13th: { hourName: "1 PM", Events: "" },
-    Hour14th: { hourName: "2 PM", Events: "" },
-    Hour15th: { hourName: "3 PM", Events: "" },
-    Hour16th: { hourName: "4 PM", Events: "" },
-    Hour17th: { hourName: "5 PM", Events: "" },
+    Hours: [{
+        hourName: "9",
+        Meridium: " AM",
+        Events: "wake em up"
+    }, {
+        hourName: "10",
+        Meridium: " AM",
+        Events: ""
+    }, {
+        hourName: "11",
+        Meridium: " AM",
+        Events: ""
+    }, {
+        hourName: "12",
+        Meridium: " PM",
+        Events: ""
+    }, {
+        hourName: "1",
+        Meridium: " PM",
+        Events: ""
+    }, {
+        hourName: "2",
+        Meridium: " PM",
+        Events: ""
+    }, {
+        hourName: "3",
+        Meridium: " PM",
+        Events: ""
+    }, {
+        hourName: "4",
+        Meridium: " PM",
+        Events: ""
+    }, {
+        hourName: "5",
+        Meridium: " PM",
+        Events: ""
+    }]
 }
