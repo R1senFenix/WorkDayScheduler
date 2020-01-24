@@ -1,7 +1,10 @@
 $(document).ready(function () {
 
     var todaysDate = moment().format('MMMM Do YYYY, h:m a');
+    var rightNow = moment().format("HH");
     $(".todaysDate").text(todaysDate);
+
+    console.log(rightNow);
 
     var localDailyObject = JSON.parse(localStorage.getItem("localDailyObject"));
     if (localDailyObject === null) {
@@ -13,25 +16,30 @@ $(document).ready(function () {
 
     for (var i = 0; i < localDailyObject.Hours.length; i++) {
 
-        var fullButtonDiv = $("<form>");
+
 
         //creates the hour number
         var hourToDisplay = localDailyObject.Hours[i].hourName;
         var meridiumToDisplay = localDailyObject.Hours[i].Meridium;
-        var hourListDisplay = $(fullButtonDiv).text(hourToDisplay + meridiumToDisplay);
-        $(".calendarBodyDaily").append(hourListDisplay);
+        var titleBoxDisplay = $("<h4>");
+        titleBoxDisplay.addClass("row-title");
+        var hoursTime = hourToDisplay + meridiumToDisplay;
+        $(titleBoxDisplay).text(hoursTime);
+        var fullButtonDiv = $("<form>");
+        $(fullButtonDiv).append(titleBoxDisplay);
+
+        //var hourListDisplay = $(fullButtonDiv);
+        $(".calendarBodyDaily").append(fullButtonDiv);
         // console.log(hourToDisplay + meridiumToDisplay);
 
         // creates the text box
         var localEventToDisplay = localDailyObject.Hours[i].Events;
         var eventBoxDisplay = $("<input>");
-        eventBoxDisplay.addClass("event-textbox")
+        eventBoxDisplay.addClass("event-textbox");
         eventBoxDisplay.attr("type", "text");
-        //test =
+
 
         eventBoxDisplay.attr("id", "event-at-" + hourToDisplay);
-        //console.log(eventToDisplay);
-        // console.log(test);
 
         if (localEventToDisplay !== "") {
             $(fullButtonDiv).append(eventBoxDisplay);
@@ -50,7 +58,7 @@ $(document).ready(function () {
         $(fullButtonDiv).append(lockInButton);
         $(".calendarBodyDaily").append(fullButtonDiv);
         $(".calendarBodyDaily").append($("<br>"));
-
+        makeColors();
 
     }
     //when the button is clicked it finds the value  
@@ -62,62 +70,65 @@ $(document).ready(function () {
         saveToLocal();
 
     });
-
     $("#form-at-10").click(function (event) {
         event.preventDefault();
         localDailyObject.Hours[1].Events = $("#event-at-10").val();
         saveToLocal();
 
     });
-
     $("#form-at-11").click(function (event) {
         event.preventDefault();
         localDailyObject.Hours[2].Events = $("#event-at-11").val();
         saveToLocal();
 
     });
-
     $("#form-at-12").click(function (event) {
         event.preventDefault();
         localDailyObject.Hours[3].Events = $("#event-at-12").val();
         saveToLocal();
 
     });
-
     $("#form-at-1").click(function (event) {
         event.preventDefault();
         localDailyObject.Hours[4].Events = $("#event-at-1").val();
         saveToLocal();
 
     });
-
     $("#form-at-2").click(function (event) {
         event.preventDefault();
         localDailyObject.Hours[5].Events = $("#event-at-2").val();
         saveToLocal();
     });
-
     $("#form-at-3").click(function (event) {
         event.preventDefault();
         localDailyObject.Hours[6].Events = $("#event-at-3").val();
         saveToLocal();
     });
-
     $("#form-at-4").click(function (event) {
         event.preventDefault();
         localDailyObject.Hours[7].Events = $("#event-at-4").val();
         saveToLocal();
     });
-
     $("#form-at-5").click(function (event) {
         event.preventDefault();
         localDailyObject.Hours[8].Events = $("#event-at-5").val();
         saveToLocal();
     });
-
     function saveToLocal() {
         localStorage.setItem("localDailyObject", JSON.stringify(localDailyObject));
         console.log(event);
+    }
+
+    function makeColors() {
+        for (var iHour = 0; iHour > localDailyObject.Hours.length; i++) {
+            if (rightNow === localDailyObject.Hours[iHour].Military) {
+                $(".lockedIn").css({ "background-color": "#0000FF" });
+            } else if (rightNow > localDailyObject.Hours[iHour].Military) {
+                $(".lockedIn").css({ "background-color": "#B22222" });
+            } else {
+                $(".lockedIn").css({ "background-color": "#006400" });
+            }
+        }
     }
 
 });

@@ -4,3 +4,20 @@ body {
   align-content: center;
   text-align: center;
 }
+
+.lockedIn {
+  padding: 1%;
+  background-color: cadetblue;
+}
+
+.event-textbox {
+  width: 60%;
+}
+.row-title {
+  display: inline;
+  margin-right: 2%;
+}
+
+button {
+  margin-left: 2%;
+}
