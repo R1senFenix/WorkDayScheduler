@@ -11,7 +11,7 @@ $(document).ready(function () {
         localDailyObject = dailyObject;
         localStorage.setItem("localDailyObject", JSON.stringify(dailyObject));
     }
-    console.log(localDailyObject);
+    //console.log(localDailyObject);
 
 
     for (var i = 0; i < localDailyObject.Hours.length; i++) {
@@ -58,7 +58,6 @@ $(document).ready(function () {
         $(fullButtonDiv).append(lockInButton);
         $(".calendarBodyDaily").append(fullButtonDiv);
         $(".calendarBodyDaily").append($("<br>"));
-        makeColors();
 
     }
     //when the button is clicked it finds the value  
@@ -118,15 +117,16 @@ $(document).ready(function () {
         localStorage.setItem("localDailyObject", JSON.stringify(localDailyObject));
         console.log(event);
     }
+    makeColors();
 
     function makeColors() {
         for (var iHour = 0; iHour > localDailyObject.Hours.length; i++) {
             if (rightNow === localDailyObject.Hours[iHour].Military) {
-                $(".lockedIn").css({ "background-color": "#0000FF" });
+                $(".lockedIn").css("background-color", "#0000FF");
             } else if (rightNow > localDailyObject.Hours[iHour].Military) {
-                $(".lockedIn").css({ "background-color": "#B22222" });
+                $(".lockedIn").css("background-color", "#B22222");
             } else {
-                $(".lockedIn").css({ "background-color": "#006400" });
+                $(".lockedIn").css("background-color", "#006400");
             }
         }
     }
