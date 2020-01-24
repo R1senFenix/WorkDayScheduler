@@ -3,7 +3,7 @@ var dailyObject = {
     Hours: [{
         hourName: "9",
         Meridium: " AM",
-        Events: "wake em up"
+        Events: ""
     }, {
         hourName: "10",
         Meridium: " AM",
